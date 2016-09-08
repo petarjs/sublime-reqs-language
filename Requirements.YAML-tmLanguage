@@ -1,0 +1,31 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: Reqs
+scopeName: text.requirements
+fileTypes: [reqs, requirements]
+uuid: 94273595-e914-4678-8e7d-0b99e9a03ff5
+
+patterns:
+# milestone
+- name: constant.language
+  match: ^\[.*\]
+
+# title
+- name: keyword.operator.word
+  match: \W.-\s.*
+
+# custom variable
+- name: storage.type
+  match: (--[^\s]+){1}
+
+# tags and numbers
+- name: entity.name
+  match: \#[^\s]*
+
+# mentions
+- name: variable.language
+  match: \@[^\s]*
+
+# comment date time
+- name: variable.language
+  match: \(.*\)
