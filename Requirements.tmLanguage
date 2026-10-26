@@ -19,27 +19,28 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\W.-\s.*</string>
+			<string>^---\s*$</string>
 			<key>name</key>
 			<string>keyword.operator.word</string>
 		</dict>
 		<dict>
-			<key>match</key>
-			<string>(--[^\s]+){1}</string>
+			<key>begin</key>
+			<string>^\s*-(?=\s)</string>
+			<key>end</key>
+			<string>$</string>
 			<key>name</key>
-			<string>storage.type</string>
+			<string>keyword.operator.word</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#metadata</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
-			<key>match</key>
-			<string>\#[^\s]*</string>
-			<key>name</key>
-			<string>entity.name</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>\@[^\s]*</string>
-			<key>name</key>
-			<string>variable.language</string>
+			<key>include</key>
+			<string>#metadata</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -48,6 +49,33 @@
 			<string>variable.language</string>
 		</dict>
 	</array>
+	<key>repository</key>
+	<dict>
+		<key>metadata</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(--[^\s]+){1}</string>
+					<key>name</key>
+					<string>storage.type</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\#[^\s]*</string>
+					<key>name</key>
+					<string>entity.name</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\@[^\s]*</string>
+					<key>name</key>
+					<string>variable.language</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 	<key>scopeName</key>
 	<string>text.requirements</string>
 	<key>uuid</key>
