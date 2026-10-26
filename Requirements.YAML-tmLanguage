@@ -10,22 +10,34 @@ patterns:
 - name: constant.language
   match: ^\[.*\]
 
-# title
+# project description delimiter
 - name: keyword.operator.word
-  match: \W.-\s.*
+  match: ^---\s*$
 
-# custom variable
-- name: storage.type
-  match: (--[^\s]+){1}
+# title, with metadata on the same line still highlighted
+- name: keyword.operator.word
+  begin: ^\s*-(?=\s)
+  end: $
+  patterns:
+  - include: '#metadata'
 
-# tags and numbers
-- name: entity.name
-  match: \#[^\s]*
-
-# mentions
-- name: variable.language
-  match: \@[^\s]*
+- include: '#metadata'
 
 # comment date time
 - name: variable.language
   match: \(.*\)
+
+repository:
+  metadata:
+    patterns:
+    # custom variable
+    - name: storage.type
+      match: (--[^\s]+){1}
+
+    # tags and numbers
+    - name: entity.name
+      match: \#[^\s]*
+
+    # mentions
+    - name: variable.language
+      match: \@[^\s]*
